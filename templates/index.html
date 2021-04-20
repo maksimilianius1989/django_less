@@ -1,37 +1,73 @@
+{% extends 'base.html' %}
 {% load static %}
+{% block index %}
+    <!-- карусель -->
+    {% include 'carusel.html' %}
+    <!-- Карточки -->
+    {% include 'price.html' %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <!-- Таблица -->
+    <section>
+        <div class="container">
+            <h1 class="text-3">Цены на услуги</h1>
+            <table class="table table_one">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Услуга</th>
+                    <th scope="col">Старая цена</th>
+                    <th scope="col">Новая цена</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Услуга 1 Услуга 1 Услуга 1</td>
+                    <td>
+                        <del>2000</del>
+                    </td>
+                    <td>1000</td>
+                </tr>
+                <tr>
+                    <td>Услуга 2 Услуга 2 Услуга 2</td>
+                    <td>
+                        <del>2000</del>
+                    </td>
+                    <td>1000</td>
+                </tr>
+                <tr>
+                    <td>Услуга 3 Услуга 3 Услуга 3</td>
+                    <td>
+                        <del>2000</del>
+                    </td>
+                    <td>1000</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <!-- форма -->
+    <section>
+        <div class="container class_form">
+            <h1 class="text-3">Оставь заявку и получи услугу</h1>
+            <div class="row justify-content-center">
+                <form action="" method="" style="width: 50%;">
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Имя</label><br>
+                        <input type="text" class="form-control" name="name">
+                        <div class="">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Телефон</label><br>
+                        <input type="text" class="form-control" name="phone">
+                        <div class="">
+                        </div>
+                    </div>
+                    <div style="float: right;" class="form-group row">
+                        <button type="submit" class="btn btn-success">ОСТАВИТЬ ЗАЯВКУ</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
 
-    <link rel="stylesheet" href="{% static 'css/main.css' %}">
-</head>
-<body>
-    <img src="{% static 'img/Screenshot_1.png' %}" alt="">
-
-    <form action="{% url 'thanks_page' %}" method="post">
-        {% csrf_token %}
-        {{ form }}
-        <button type="submit">Send</button>
-    </form>
-
-    <table>
-        <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Date</th>
-            <th>Phone</th>
-        </tr>
-        {% for item in object_list %}
-            <tr>
-                <td>{{ item.id }}</td>
-                <td>{{ item.order_dt }}</td>
-                <td>{{ item.order_name }}</td>
-                <td>{{ item.order_phone }}</td>
-            </tr>
-        {% endfor %}
-    </table>
-</body>
-</html>
+{% endblock %}
